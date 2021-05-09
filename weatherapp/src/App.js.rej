@@ -1,0 +1,12 @@
+diff a/weatherapp/src/App.js b/weatherapp/src/App.js	(rejected hunks)
+@@ -12,9 +12,7 @@
+           <Status/>
+           <Params/>
+       </div>
+-      <div className="chart-container">
+-
+-      </div>
++      <Chart/>
+     </div>
+   );
+ }

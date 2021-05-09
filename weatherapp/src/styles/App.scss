@@ -1,0 +1,26 @@
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: #fff;
+}
+
+.layout__container {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        180deg,
+        rgba(50, 94, 189, 0.913603),
+        rgba(25, 107, 138, 0.779149) 60%,
+        rgba(0, 172, 255, 0.319765)
+    );
+    &-upper {
+        height: 65%;
+    }
+    
+    &-chart {
+        height: 35%;
+        width: 100%;
+        background: #FFFFFF;
+    }
+}
+

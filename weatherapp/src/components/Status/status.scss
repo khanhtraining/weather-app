@@ -1,0 +1,45 @@
+.weatherStatus-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+
+    .weatherStatus-wrapper__icon {
+        width: 80px;
+        height: 80px;
+        background-size: contain;
+        background-image: url('../../images/static/cloud.svg');
+        cursor: pointer;
+    }
+
+    .weatherStatus-wrapper__info {
+        margin-left: 30px;
+        font-size: 20px;
+
+        .status-text {
+            font-size: 30px;
+            color: #ffffff;
+        }
+        .status-info {
+            .status-temperature:before {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background-size: contain;
+                background-image: url('../../images/static/temperature.svg');
+                content: "";
+                color: #ffffff;
+            }
+            .status-humidity::before {
+                margin-left: 40px;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background-size: contain;
+                background-image: url('../../images/static/humidity.svg');
+                content: "";
+                color: #ffffff;
+            }
+        }
+    }
+}
