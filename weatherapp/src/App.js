@@ -1,10 +1,9 @@
 import React from "react";
-import "./styles/App.scss";
+import "./styles/App1.scss";
 import { Header } from './components/Header/Header';
 import { Status } from './components/Status/Status';
 import { Params } from './components/Params/Params';
 import { Chart } from './components/Chart/Chart';
-import { Water } from './components/Water/Water';
 function App() {
   return (
     <div className="layout__container">
@@ -15,9 +14,12 @@ function App() {
       </div>
       
       <div className="layout__container-chart">
-          <Water/>
+          <div className="layout__container-chart--title">
+                <span className="blue-title">Tide</span>
+                <span className="orange-title">Sunrise & Sunset</span>
+          </div>
+          <Chart/>
       </div>
-
     </div>
   );
 }
