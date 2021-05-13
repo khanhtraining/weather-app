@@ -10,13 +10,13 @@ body {
     height: 100vh;
     overflow: none;
     &-upper {
-    height: 65%;
+    height: 60%;
     width: 100%;
     background: linear-gradient(180deg,rgba(50,94,189,.913603),rgba(25,107,138,.779149) 60%,rgba(0,172,255,.319765));
     }
     
     &-chart {
-        height: 35%;
+        height: 40%;
         width: 100%;
         background: #FFFFFF;
         overflow-x: scroll;
