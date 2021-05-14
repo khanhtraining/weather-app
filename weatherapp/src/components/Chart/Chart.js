@@ -6,42 +6,23 @@ import axios from "axios";
 import { _URL_HOURLY } from '../../constants.js';
 
 export const Chart = props => {
+    const [responseData, setResponseData] = React.useState(null);
+    // }, [fetchWeatherData])
+    const [dateTime, setDateTime] = React.useState(null);
 
-        const [responseData, setResponseData] = React.useState('');
-        const fetchWeatherData = React.useCallback(() => {
-            axios({
-            "method": "GET",
-            "url": _URL_HOURLY ,
-            })
-            .then(function(response) {
-                console.log('yes')
-                console.log(response.data)
-            })
-            .catch((error) => {
-                console.log('no')
-                console.log(error)
-            })
-        }, [])
-        React.useEffect(() => {
-            fetchWeatherData()
-        }, [fetchWeatherData])
+    // Constructor
+    useEffect(() => {
+        var lineGenerator = d3.line()
+            .curve(d3.curveCardinal);
 
-        useEffect(() => {
-            
-        })
-
-        useEffect(() => {   
-            var lineGenerator = d3.line()
-                .curve(d3.curveCardinal);
-        
         const canvasWater = [
             [0, 300],
             [0, 260],
-            [100,230],
-            [200,210],
-            [300,190],
-            [400,170],
-            [500,150],
+            [100, 230],
+            [200, 210],
+            [300, 190],
+            [400, 170],
+            [500, 150],
             [600, 140],
             [700, 150],
             [800, 170],
@@ -50,11 +31,11 @@ export const Chart = props => {
             [1100, 230],
             [1200, 250],
 
-            [1300,230],
-            [1400,210],
-            [1500,190],
-            [1600,170],
-            [1700,150],
+            [1300, 230],
+            [1400, 210],
+            [1500, 190],
+            [1600, 170],
+            [1700, 150],
             [1800, 140],
             [1900, 150],
             [2000, 170],
@@ -63,11 +44,11 @@ export const Chart = props => {
             [2300, 230],
             [2400, 250],
 
-            [2500,230],
-            [2600,210],
-            [2700,190],
-            [2800,170],
-            [2900,150],
+            [2500, 230],
+            [2600, 210],
+            [2700, 190],
+            [2800, 170],
+            [2900, 150],
             [3000, 140],
             [3100, 150],
             [3200, 170],
@@ -76,11 +57,11 @@ export const Chart = props => {
             [3500, 230],
             [3600, 250],
 
-            [3700,230],
-            [3800,210],
-            [3900,190],
-            [4000,170],
-            [4100,150],
+            [3700, 230],
+            [3800, 210],
+            [3900, 190],
+            [4000, 170],
+            [4100, 150],
             [4200, 140],
             [4300, 150],
             [4400, 170],
@@ -89,11 +70,11 @@ export const Chart = props => {
             [4700, 230],
             [4800, 250],
 
-            [4900,230],
-            [5000,210],
-            [5100,190],
-            [5200,170],
-            [5300,150],
+            [4900, 230],
+            [5000, 210],
+            [5100, 190],
+            [5200, 170],
+            [5300, 150],
             [5400, 140],
             [5500, 150],
             [5600, 170],
@@ -101,12 +82,12 @@ export const Chart = props => {
             [5800, 210],
             [5900, 230],
             [6000, 250],
-            
-            [6100,230],
-            [6200,210],
-            [6300,190],
-            [6400,170],
-            [6500,150],
+
+            [6100, 230],
+            [6200, 210],
+            [6300, 190],
+            [6400, 170],
+            [6500, 150],
             [6600, 140],
             [6700, 150],
             [6800, 170],
@@ -115,7 +96,7 @@ export const Chart = props => {
             [7100, 230],
             [7200, 250],
 
-            [7200,300]
+            [7200, 300]
         ];
 
         const canvas1 = [
@@ -149,19 +130,55 @@ export const Chart = props => {
             .attr('d', pathCanvas2);
         d3.select('.pathCanvas3')
             .attr('d', pathCanvas3);
-            
-    }, [])
+
+        // Viết 1 cái Set interval chỗ này cho nó tự gọi lại hàm fetch api, ví dụ 5' hoặc 30s gì đó...vip
+        // Fetch API
+        fetchApi();
+    }, []);
+
+    // Get datetime
+    useEffect(() => {
+        // fetchApi();
+        if (responseData != null && responseData !== undefined) {
+            const date = new Date(responseData.dt * 1000);
+            console.log(date.getDate());
+            console.log(date.getDay());
+            console.log(date.getFullYear())
+        }
+    }, [responseData]);
+
+    // const aaa = setDateTime(date.getDate());
+    // console.log(aaa);
+
+    const fetchApi = () => {
+        axios({
+            "method": "GET",
+            "url": _URL_HOURLY,
+        })
+            .then(function (response) {
+                setResponseData(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     return (
         <div className="svg_chart">
-           <svg className="svg">
+            <div className="svg_chart-day">
+                <h4></h4>
+            </div>
+            <svg className="svg">
+
                 <path className='pathData'>
                 </path>
                 <path className='pathCanvas1'>
                 </path>
                 <path className='pathCanvas2'>
                 </path>
-                <path className='pathCanvas3'></path>
-         </svg>
+                <path className='pathCanvas3'>
+                </path>
+            </svg>
 
         </div>
     )
