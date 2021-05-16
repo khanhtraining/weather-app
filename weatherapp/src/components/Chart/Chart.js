@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Helmet } from 'react-helmet';
 import './chart.scss';
 import * as d3 from "d3";
 import axios from "axios";
+import moment from 'moment';
 import { _URL_HOURLY } from '../../constants.js';
+import { fakeAPIPromise } from '../../fakeAPIPromise';
 
 export const Chart = props => {
     const [responseData, setResponseData] = React.useState(null);
-    // }, [fetchWeatherData])
+    const [data, setData] = useState([]);
     const [dateTime, setDateTime] = React.useState(null);
-
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     // Constructor
     useEffect(() => {
         var lineGenerator = d3.line()
@@ -135,15 +136,17 @@ export const Chart = props => {
         // Fetch API
         fetchApi();
     }, []);
-
+    const onResizeWidth = e => {
+        const width = window.innerWidth;
+        setWindowWidth(width);
+    }
     // Get datetime
     useEffect(() => {
-        // fetchApi();
         if (responseData != null && responseData !== undefined) {
-            const date = new Date(responseData.dt * 1000);
-            console.log(date.getDate());
-            console.log(date.getDay());
-            console.log(date.getFullYear())
+            const dateTime = new Date(responseData.dt * 1000);
+            console.log(dateTime.getDate());
+            console.log(dateTime.getDay());
+            console.log(dateTime.getFullYear())
         }
     }, [responseData]);
 
@@ -163,10 +166,32 @@ export const Chart = props => {
             })
     }
 
+    const formartedData = fakeAPIPromise.map(d => ({
+        date: moment(d.time).format('DD/MM/yyyy'),
+        tide: d.tide
+    }));
+
+    console.log(formartedData)
+
+    useEffect(async () => {
+        const data = await fakeAPIPromise;
+        console.log(data, 'data');
+        //setData(data);
+    }, []);
+
+    console.log(data);
+
     return (
         <div className="svg_chart">
             <div className="svg_chart-day">
-                <h4></h4>
+
+                {/* {formartedData.map(d => [                    <h4>Day
+                        {d.date}
+                        {' - '}
+                        {d.tide}
+                    </h4>
+                ])} */}
+
             </div>
             <svg className="svg">
 
