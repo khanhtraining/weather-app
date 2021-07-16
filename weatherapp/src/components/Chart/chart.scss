@@ -13,9 +13,7 @@
 	height: 100%;
 	.pathData {
 		fill: #94d6f7;
-		stroke: #999;
 		overflow-y: hidden;
-
 	}
 	.pathCanvas1, .pathCanvas2, .pathCanvas3 , .pathHour{
 		fill: none;
@@ -23,7 +21,13 @@
 		overflow-x: scroll;
 		overflow-y: hidden;
 		stroke-width: 2;
-
+	}
+	.pathd3rectangle_1 {
+		fill: burlywood;
+	}
+	.pathMoon {
+		fill:rgb(195, 190, 190);
+		opacity: 0.5;
 	}
 }
 
