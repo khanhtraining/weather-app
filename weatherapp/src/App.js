@@ -1,17 +1,11 @@
 import React from "react";
-import "./styles/App1.scss";
-import { Header } from './components/Header/Header';
-import { Status } from './components/Status/Status';
-import { Params } from './components/Params/Params';
-import { Chart } from './components/Chart/Chart';
+import Chart from "./scenes/Chart/Chart";
+import Upper from "./scenes/_Upper/Upper";
+import "./styles/App.scss"
 function App() {
   return (
     <div className="layout__container">
-      <div className="layout__container-upper">
-        <Header />
-        <Status />
-        <Params />
-      </div>
+      <Upper/>
       
       <div className="layout__container-chart">
           <div className="layout__container-chart--title">
@@ -24,4 +18,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default App

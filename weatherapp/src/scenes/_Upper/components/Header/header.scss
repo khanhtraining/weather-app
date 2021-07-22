@@ -22,13 +22,14 @@
         .nav-location-dropdown {
             display: flex;
             align-items: center;
+            color: black;
             .icon-arrow {
                 display: inline-block;
                 width: 15px;
                 height: 15px;
                 margin-left: 5px;
                 background-size: contain;
-                background-image: url('../../images/static/arrow_down.svg');
+                background-image: url('../../../../assets/static/arrow_down.svg');
             }
         }
     }
@@ -37,7 +38,7 @@
         width: 30px;
         height: 30px;
         background-size: contain;
-        background-image: url('../../images/static/bell_notification.svg');
+        background-image: url('../../../../assets/static/bell_notification.svg');
         cursor: pointer;
     }
 }

@@ -3,12 +3,11 @@
     justify-content: center;
     align-items: center;
     height: 40%;
-
     .weatherStatus-wrapper__icon {
         width: 80px;
         height: 80px;
         background-size: contain;
-        background-image: url('../../images/static/cloud.svg');
+        background-image: url('../../../../assets/static/cloud.svg');
         cursor: pointer;
     }
 
@@ -26,7 +25,7 @@
                 width: 20px;
                 height: 20px;
                 background-size: contain;
-                background-image: url('../../images/static/temperature.svg');
+                background-image: url('../../../../assets/static/temperature.svg');
                 content: "";
                 color: #ffffff;
             }
@@ -36,10 +35,13 @@
                 width: 20px;
                 height: 20px;
                 background-size: contain;
-                background-image: url('../../images/static/humidity.svg');
+                background-image: url('../../../../assets/static/humidity.svg');
                 content: "";
                 color: #ffffff;
             }
         }
     }
+}
+.location {
+    text-align: center;
 }
