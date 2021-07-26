@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import './params.scss';
+import React from 'react'
+import './params.scss'
 
 export const Params = (props) => {
     return (

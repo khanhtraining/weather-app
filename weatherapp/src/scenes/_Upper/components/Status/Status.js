@@ -4,7 +4,7 @@ import useFetchData from '../../../../commons/useFetchData'
 import { locationUri } from '../../../../commons/utils'
 import './status.scss'
 import { DiamonLoading } from 'react-loadingg'
-import Params from './components/Params/Params'
+import Params from '../Status/components/Params/Params'
 const Status = ({ locationId }) => {
     const [consolidatedWeatherFirst, setConsolidatedWeatherFirst] = useState(null)
     const { data, loading, error } = useFetchData(`${locationUri}/${locationId}`, {}, [locationId])

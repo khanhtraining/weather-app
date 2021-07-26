@@ -4,7 +4,7 @@ const useFetchData = (url, initialData = [], dependencies = []) => {
     const [data, setData] = useState(initialData)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    
+
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
@@ -20,7 +20,7 @@ const useFetchData = (url, initialData = [], dependencies = []) => {
         }
         fetchData()
     }, dependencies)
-    return { setData, data, loading, error}
+    return { setData, data, loading, error }
 }
 
 export default useFetchData

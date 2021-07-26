@@ -11,7 +11,8 @@
 
         .title {
             font-weight: 500;
-            font-size: 18px;
+            font-size: 13px;
+            text-align: center;
         }
         &:last-child {
             border-right: none;
@@ -24,11 +25,13 @@
             border-radius: 3px;
             font-size: 24px;
             padding: 5px;
+            text-align: center;
         }
         .normal-number {
             width: 20px;
             height: 30px;
             font-size: 30px;
+            text-align: center;
         }
 
         .circle-shape {
