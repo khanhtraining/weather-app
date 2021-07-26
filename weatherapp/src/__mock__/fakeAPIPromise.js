@@ -1,4 +1,4 @@
-export const fakeAPIPromisew = [
+export const fakeAPIPromise = [
     {
         tide: 0.5,
         hour: 'Mon 12:00 pm',
