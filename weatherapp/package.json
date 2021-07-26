@@ -1,6 +1,8 @@
 {
-  "name": "weatherapp",
+  "name": "weather-app",
   "version": "0.1.0",
+  "description": "Weather App",
+  "main": "web.js",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.12.0",
@@ -27,12 +29,20 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.1"
   },
+  "engines": {
+    "node": "14.16.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "kwx",
   "eslintConfig": {
     "extends": [
       "react-app",
