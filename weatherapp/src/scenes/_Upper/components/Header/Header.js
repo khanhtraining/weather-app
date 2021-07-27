@@ -11,6 +11,7 @@ export const Header = () => {
             setLocationId(foundLocationId)
         }
     }
+    console.log(locationId);
     return (
         <div>
             <div className="nav-container">

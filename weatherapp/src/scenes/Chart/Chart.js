@@ -20,7 +20,7 @@ export const Chart = () => {
             .attr("transform", "translate(0,0)")
             .style('color', '#000')
         var yAxis = g.append("g")
-        var lineSunColor = 'yellow'
+        var lineSunColor = 'orange'
 
         var lineTidePath = d3.area()
             .x(function (d) { return x(d.hour); })
@@ -91,7 +91,7 @@ export const Chart = () => {
             rectangle()
         }
         drawChart()
-        window.addEventListener('resize', drawChart)
+        // window.addEventListener('resize', drawChart)
     })
 
     return (

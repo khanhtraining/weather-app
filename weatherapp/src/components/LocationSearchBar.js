@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { FormControl } from 'react-bootstrap'
-import { locationUri } from '../../src/commons/utils'
+import { locationUrl } from '../../src/commons/utils'
 import PropTypes from 'prop-types'
 import Autocomplete from 'react-autocomplete'
 import { WindMillLoading } from 'react-loadingg'
+import axios from 'axios'
 
 const LocationSearchBar = ({ onSearch }) => {
     const [selectedLocationName, setSelectedLocationName] = useState('')
@@ -17,20 +18,20 @@ const LocationSearchBar = ({ onSearch }) => {
         const locationString = e.target.value
         setSelectedLocationName(locationString)
         if (locationString !== '') {
-            const response = await fetch(`${locationUri}/search/?query=${locationString}`)
-            response.json().then((response) => {
+            try {
+                const response = await axios.get(`${locationUrl}/search/?query=${locationString}`)
                 setState({
                     loading: true,
                     error: null,
                     foundLocations: response.data
                 })
-            }).catch((e) => {
+            } catch (err) {
                 setState({
-                    loading: true,
-                    error: e,
+                    loading: false,
+                    error: null,
                     foundLocations: []
                 })
-            })
+            }
         }
     }
 
@@ -41,9 +42,10 @@ const LocationSearchBar = ({ onSearch }) => {
         })
         setState({
             loading: false,
-            error: null,
+            error: false,
             foundLocations: []
         })
+        console.log(selectedLocationName.woeid)
         onSearch(selectedLocationName.woeid)
     }
     return (
@@ -62,7 +64,7 @@ const LocationSearchBar = ({ onSearch }) => {
                 onSelect={onSelect}
             />
             {state.error && <span className='text-danger'>{state.error}</span>}
-            {state.loading && <span className='text-info'><WindMillLoading/></span>}
+            {state.loading && <span className='text-info'><WindMillLoading /></span>}
         </React.Fragment>
     )
 }

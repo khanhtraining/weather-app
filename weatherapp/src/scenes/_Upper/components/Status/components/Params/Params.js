@@ -30,4 +30,5 @@ export const Params = (props) => {
         </React.Fragment>
     )
 }
-export default Params;
+
+export default Params

@@ -1,27 +1,41 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import PropTypes from 'prop-types'
-import useFetchData from '../../../../commons/useFetchData'
-import { locationUri } from '../../../../commons/utils'
+import { locationUrl } from '../../../../commons/utils'
 import './status.scss'
 import { DiamonLoading } from 'react-loadingg'
 import Params from '../Status/components/Params/Params'
 const Status = ({ locationId }) => {
     const [consolidatedWeatherFirst, setConsolidatedWeatherFirst] = useState(null)
-    const { data, loading, error } = useFetchData(`${locationUri}/${locationId}`, {}, [locationId])
+    const [weather, setWeather] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
 
-    useEffect((props) => {
-        if (data.consolidated_weather !== undefined && data.consolidated_weather.length > 0) {
-            setConsolidatedWeatherFirst(data.consolidated_weather[0])
-            return consolidatedWeatherFirst
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true)
+            setError(false)
+            try {
+                const response = await axios.get(`${locationUrl}/${locationId}`)
+                setWeather(response.data)
+                setConsolidatedWeatherFirst(response.data.consolidated_weather[0])
+                setLoading(true)
+                setError(false)
+            } catch (err) {
+                setError(true)
+            }
+            setLoading(false)
         }
-    }, [data])
-
+        fetchData()
+    },[locationId])
+    console.log(weather)
+    console.log(consolidatedWeatherFirst);
     return (
         <React.Fragment>
             {
                 consolidatedWeatherFirst === null ? "" : <>
                     {loading && <div className='location'>loading...</div>}
-                    <div className='location'>Location: {data.title}</div>
+                    <div className='location'>Location: {weather.title}</div>
                     <div className="weatherStatus-wrapper">
                         <div className="weatherStatus-wrapper__icon">
                         </div>
@@ -33,7 +47,7 @@ const Status = ({ locationId }) => {
                             </div>
                         </div>
                     </div>
-                    <Params dataFromStatus={consolidatedWeatherFirst}/>
+                    <Params dataFromStatus={consolidatedWeatherFirst} />
                 </>
             }
             {error && <div className='text-danger'> {error} </div>}

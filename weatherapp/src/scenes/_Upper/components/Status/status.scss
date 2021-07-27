@@ -8,7 +8,7 @@
         width: 80px;
         height: 80px;
         background-size: contain;
-        background-image: url('../../../../assets/static/cloud.svg');
+        background-image: url("../../../../assets/cloud.svg");
         cursor: pointer;
     }
 
@@ -26,7 +26,7 @@
                 width: 20px;
                 height: 20px;
                 background-size: contain;
-                background-image: url('../../../../assets/static/temperature.svg');
+                background-image: url("../../../../assets/temperature.svg");
                 content: "";
                 color: #ffffff;
             }
@@ -36,7 +36,7 @@
                 width: 20px;
                 height: 20px;
                 background-size: contain;
-                background-image: url('../../../../assets/static/humidity.svg');
+                background-image: url("../../../../assets/humidity.svg");
                 content: "";
                 color: #ffffff;
             }

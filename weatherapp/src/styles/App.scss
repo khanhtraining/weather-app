@@ -10,15 +10,20 @@ body {
     height: 100vh;
     overflow: none;
     &-upper {
-    height: 60%;
-    width: 100%;
-    background: linear-gradient(180deg,rgba(50,94,189,.913603),rgba(25,107,138,.779149) 60%,rgba(0,172,255,.319765));
+        height: 60%;
+        width: 100%;
+        background: linear-gradient(
+            180deg,
+            rgba(50, 94, 189, 0.913603),
+            rgba(25, 107, 138, 0.779149) 60%,
+            rgba(0, 172, 255, 0.319765)
+        );
     }
-    
+
     &-chart {
         height: 40%;
         width: 100%;
-        background: #FFFFFF;
+        background: #ffffff;
         overflow-x: scroll;
         &--title {
             position: sticky;

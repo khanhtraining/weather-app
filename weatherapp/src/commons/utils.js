@@ -1,8 +1,4 @@
-const SERVER_ADRESS = process.env.SERVER_ADRESS || 'http://localhost:4000'
+const API_URL = `https://cors-anywhere.herokuapp.com`
+const baseUrl = `https://www.metaweather.com/api/location`
 
-const locationUri = `${SERVER_ADRESS}/location`
-
-export {
-    SERVER_ADRESS,
-    locationUri
-}
+export const locationUrl = `${API_URL}/${baseUrl}` 

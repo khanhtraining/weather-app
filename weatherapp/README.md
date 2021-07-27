@@ -1,11 +1,7 @@
 ## This is the weather application use react
 
 ### Step to start
-
-1. Start server
-cd server, node express
-
-2. Start ui
+# Start ui
 npm start
 
 ### Other option
